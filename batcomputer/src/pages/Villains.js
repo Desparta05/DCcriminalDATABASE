@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import villainData from "../data/villainData.json"
-import SearchField from "../componets/SearchField"
+import SearchField from "../components/SearchField"
 
 function Villains() {
     const [villains, setVillains] = useState(villainData);
