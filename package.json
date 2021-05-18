@@ -4,5 +4,24 @@
     "html-to-json-data": "^1.6.0",
     "mongoose": "^5.12.8",
     "puppeteer": "^9.1.1"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "DCcriminalDATABASE",
+  "description": "BatComputer application always you to lookup and search for criminals within the DC Universe.",
+  "version": "1.0.0",
+  "main": "scrapper.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Desparta05/DCcriminalDATABASE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Desparta05/DCcriminalDATABASE/issues"
+  },
+  "homepage": "https://github.com/Desparta05/DCcriminalDATABASE#readme"
 }
