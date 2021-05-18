@@ -1,3 +1,4 @@
 module.exports ={
-    Villains: require("./villains")
+    Villains: require("./villains"),
+    Heroes: require("./heroes")
 };
