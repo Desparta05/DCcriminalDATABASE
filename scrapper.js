@@ -13,65 +13,73 @@ mongoose.connect(
     }
 );
 
+async function getVillainAttribute(url, attr, page, villainAttributePath, villainAttributeProperty)
+{
+    var villainAttribute = '';
+    
+    var [el] = await page.$x(villainAttributePath)
+
+    if(el != null) 
+    {
+        var xPathProperty = await el.getProperty(villainAttributeProperty).catch(console.log(url + " missing " + attr));
+        villainAttribute = await xPathProperty.jsonValue();
+    }
+
+    return villainAttribute;
+}
+
 async function scrapeProduct(url) {
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    await page.goto(url);
+
+    var Image = '';
+    var Name= '';
+    var Alias = '';
+    var Gender= '';
+    var Height= '';
+    var Weight= '';
+    var EyeColor= '';
+    var HairColor= '';
+    var City= '';
+    var Powers= '';
+    var Description= '';
+
+    var browser = await puppeteer.launch();
+    var page = await browser.newPage();
+    page.setUserAgent("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36")
+    await page.goto(url, {timeout:0});
+    
 
     // Scrap Image
-    const [sImage] = await page.$x('//*[@id="mw-content-text"]/div/aside/figure/a/img')
-    const src = await sImage.getProperty('src');
-    const Image = await src.jsonValue();
-
+    Image = await getVillainAttribute(url, 'image', page, '//*[@id="mw-content-text"]/div/aside/figure/a/img', 'src');
+    
     // Scrap Name
-    const [sName] = await page.$x('//*[@id="mw-content-text"]/div/aside/div[1]/div/a')
-    const txt = await sName.getProperty('textContent');
-    const Name = await txt.jsonValue();
+    Name = await getVillainAttribute(url, 'name', page, '//*[@id="mw-content-text"]/div/aside/div[1]/div/a', 'textContent');
 
     // Scrape Alias
-    const [sAlias] = await page.$x('//*[@id="mw-content-text"]/div/aside/div[2]/div')
-    const txt2 = await sAlias.getProperty('textContent');
-    const Alias = await txt2.jsonValue();
+    Alias = await getVillainAttribute(url, 'alias', page, '//*[@id="mw-content-text"]/div/aside/div[2]/div', 'textContent');
 
     // Scrape Gender
-    const [sGender] = await page.$x('//*[@id="mw-content-text"]/div/aside/section[2]/div[1]/div/a')
-    const txt3 = await sGender.getProperty('textContent');
-    const Gender = await txt3.jsonValue();
+    Gender = await getVillainAttribute(url, 'gender', page, '//*[@id="mw-content-text"]/div/aside/section[2]/div[1]/div/a', 'textContent');
 
     // Scrape Height
-    const [sHeight] = await page.$x('//*[@id="mw-content-text"]/div/aside/section[2]/div[2]/div/span/a')
-    const txt4 = await sHeight.getProperty('textContent');
-    const Height = await txt4.jsonValue();
-
+    Height = await getVillainAttribute(url, 'height', page, '//*[@id="mw-content-text"]/div/aside/section[2]/div[2]/div/span/a', 'textContent');
+    
     // Scrape Weight
-    const [sWeight] = await page.$x('//*[@id="mw-content-text"]/div/aside/section[2]/div[3]/div/span/a')
-    const txt5 = await sWeight.getProperty('textContent');
-    const Weight = await txt5.jsonValue();
+    Weight = await getVillainAttribute(url, 'weight', page, '//*[@id="mw-content-text"]/div/aside/section[2]/div[3]/div/span/a', 'textContent');
 
     // Scrape Eye Color
-    const [sEyes] = await page.$x('//*[@id="mw-content-text"]/div/aside/section[2]/div[4]/div/a')
-    const txt6 = await sEyes.getProperty('textContent');
-    const EyeColor = await txt6.jsonValue();
+    EyeColor = await getVillainAttribute(url, 'eyecolor', page, '//*[@id="mw-content-text"]/div/aside/section[2]/div[4]/div/a', 'textContent');
 
     // Scrape Hair Color
-    const [sHair] = await page.$x('//*[@id="mw-content-text"]/div/aside/section[2]/div[5]/div')
-    const txt7 = await sHair.getProperty('textContent');
-    const HairColor = await txt7.jsonValue();
+    HairColor = await getVillainAttribute(url, 'haircolor', page, '//*[@id="mw-content-text"]/div/aside/section[2]/div[5]/div', 'textContent');
 
     // Scrape Base Of Operations
-    const [sCity] = await page.$x('//*[@id="mw-content-text"]/div/aside/div[3]/div/a')
-    const txt8 = await sCity.getProperty('textContent');
-    const City = await txt8.jsonValue();
+    City = await getVillainAttribute(url, 'city', page, '//*[@id="mw-content-text"]/div/aside/div[3]/div/a', 'textContent');
 
     // Scrape Powers and Abilities
-    const [sPowers] = await page.$x('//*[@id="mw-content-text"]/div/ul[1]')
-    const txt9 = await sPowers.getProperty('textContent');
-    const Powers = await txt9.jsonValue();
+    Powers = await getVillainAttribute(url, 'powers', page, '//*[@id="mw-content-text"]/div/ul[1]', 'textContent');
 
     // Scrape Description
-    const [sDescrip] = await page.$x('//*[@id="mw-content-text"]/div/p[3]')
-    const txt10 = await sDescrip.getProperty('textContent');
-    const Description = await txt10.jsonValue();
+    Description = await getVillainAttribute(url, 'description', page, '//*[@id="mw-content-text"]/div/p[3]', 'textContent');
 
     console.log({ Image, Name, Alias, Gender, Height, Weight, EyeColor, HairColor, City, Powers, Description });
 
@@ -79,4 +87,20 @@ async function scrapeProduct(url) {
     db.Villains.create({ Image, Name, Alias, Gender, Height, Weight, EyeColor, HairColor, City, Powers, Description }).then(() => console.log("character created"))
 }
 
-scrapeProduct('https://dc.fandom.com/wiki/Alexander_Sartorius_(New_Earth)');
+// scrapeProduct('https://dc.fandom.com/wiki/Catwoman_(Selina_Kyle)');
+
+var links = [
+    "https://dc.fandom.com/wiki/Bedlam_(New_Earth)",
+    "https://dc.fandom.com/wiki/Bedovian_(New_Earth)",
+    "https://dc.fandom.com/wiki/Beelzebub_(New_Earth)",
+    "https://dc.fandom.com/wiki/Bellerophon_(New_Earth)",
+    "https://dc.fandom.com/wiki/Bellona_(New_Earth)",
+    "https://dc.fandom.com/wiki/Belthera_(New_Earth)",
+    "https://dc.fandom.com/wiki/Belyllioth_(New_Earth)",
+    "https://dc.fandom.com/wiki/Benedict_Arnold_(New_Earth)",
+    "https://dc.fandom.com/wiki/Benjamin_Asplin_(New_Earth)",
+    "https://dc.fandom.com/wiki/Benjamin_Bloch_(New_Earth)"
+]
+
+links.forEach(scrapeProduct);
+

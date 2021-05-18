@@ -3,6 +3,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
+const path = require("path")
+
 const PORT = process.env.PORT || 3001;
 
 
@@ -18,7 +20,13 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 //Connect to the Mongo DB
-mongoose.connect(precess.env.MONGODB_URI || "mongodb://localhost:27017/db_dcComics")
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/db_dcComics",
+    {
+        useUnifiedTopology: true,
+        useNewUrlParser: true,
+        useFindAndModify: false,
+    }
+);
 
 app.listen(PORT, function() {
     console.log(`=> API Server now listening on PORT ${PORT}!`);
