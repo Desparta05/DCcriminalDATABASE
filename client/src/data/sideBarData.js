@@ -24,14 +24,14 @@ export const sideBarData =[
         cName: 'nav-text'
     },
     {
-        title: 'PossibleThreats',
-        path: '/possiblethreats',
-        icon: <GiIcons.GiBrute />,
+        title: 'Equipment',
+        path: '/equipment',
+        icon: <GiIcons.GiApc />,
         cName: 'nav-text'
     },
     {
-        title: 'Equipment',
-        path: '/equipment',
+        title: 'Sign-Up',
+        path: '/signUp',
         icon: <GiIcons.GiApc />,
         cName: 'nav-text'
     },
