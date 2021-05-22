@@ -1,14 +1,32 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import {sideBarData} from '../data/sideBarData';
 import './NavBar.css';
+import { Button } from './Button';
 
 export function NavBar() {
-    const [sidebar, setSideBar] = useState(false)
+    const [sidebar, setSideBar] = useState(false);
+    const [button, setButton] = useState(true);
 
     const showSidebar = () => setSideBar(!sidebar)
+
+    const showButton = () => {
+        if (window.innerWidth <= 960 ) {
+            setButton(false);
+        } else {
+            setButton(true);
+        }
+    };
+
+    useEffect(() => {
+        showButton()
+    }, []);
+
+    window.addEventListener('resize', showButton)
+
     return (
         <>
             <div className='navbar'>
@@ -31,11 +49,14 @@ export function NavBar() {
                                     <span>{item.title}</span>
                                 </Link>
                             </li>
+
                         )
                     })}
                 </ul>
+                
             </nav>
         </>
     );
 };
 
+export default NavBar
