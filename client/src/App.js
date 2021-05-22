@@ -1,21 +1,26 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Main } from './layouts/Main'
+import  Main  from './layouts/Main'
 import Home from "./pages/Home"
-// import Villains from "./pages/Villains"
+import Villains from "./pages/Villains"
+import Signup from "./pages/Signup"
 
-export const App = () => {
+const App = () => {
   return (
+    <>
   <BrowserRouter>
       <Routes>
         <Route element= {<Main/>}>
           <Route path= "/" element={<Home/>} />
-          <Route path= "/villains" element={<h1>Villains</h1>} />
+          <Route path= "/villains" element={<Villains/>} />
           <Route path= "/heroes" element={<h1>Heroes</h1>} />
-          <Route path= "/possiblethreats" element={<h1>PossibleThreats</h1>} />
           <Route path= "/equipment" element={<h1>Equipment</h1>} />
+          <Route path= "/Signup" element={<Signup/>} />
         </Route>
       </Routes>
   </BrowserRouter>
+  </>
   );
 }
+
+export default App;
