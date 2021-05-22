@@ -1,10 +1,10 @@
 import React from "react";
-
+import MainSection from '../components/MainSection'
 
 function Home () {
     return(
         <div className ='home'>
-        <h1>Hello</h1>
+        <MainSection />
         </div>
     );
 
