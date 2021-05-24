@@ -7,7 +7,7 @@ const API = {
     },
 
     getVillain: function (id) {
-        return axios.get("/api/villains" + id);
+        return axios.get("/api/villains/" + id);
     },
 
     login: function (body) {

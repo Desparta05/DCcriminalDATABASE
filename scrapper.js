@@ -90,16 +90,16 @@ async function scrapeProduct(url) {
 // scrapeProduct('https://dc.fandom.com/wiki/Catwoman_(Selina_Kyle)');
 
 var links = [
-    "https://dc.fandom.com/wiki/Bedlam_(New_Earth)",
-    "https://dc.fandom.com/wiki/Bedovian_(New_Earth)",
-    "https://dc.fandom.com/wiki/Beelzebub_(New_Earth)",
-    "https://dc.fandom.com/wiki/Bellerophon_(New_Earth)",
-    "https://dc.fandom.com/wiki/Bellona_(New_Earth)",
-    "https://dc.fandom.com/wiki/Belthera_(New_Earth)",
-    "https://dc.fandom.com/wiki/Belyllioth_(New_Earth)",
-    "https://dc.fandom.com/wiki/Benedict_Arnold_(New_Earth)",
-    "https://dc.fandom.com/wiki/Benjamin_Asplin_(New_Earth)",
-    "https://dc.fandom.com/wiki/Benjamin_Bloch_(New_Earth)"
+    "https://dc.fandom.com/wiki/Benjamin_Gruener_(New_Earth)",
+    "https://dc.fandom.com/wiki/Benjamin_Love_(New_Earth)",
+    "https://dc.fandom.com/wiki/Benjamin_Raymond_(New_Earth)",
+    "https://dc.fandom.com/wiki/Benjamin_Stryker_(New_Earth)",
+    "https://dc.fandom.com/wiki/Berelda_(New_Earth)",
+    "https://dc.fandom.com/wiki/Bernadeth_(New_Earth)",
+    "https://dc.fandom.com/wiki/Bernard_Bonner_(New_Earth)",
+    "https://dc.fandom.com/wiki/Bernard_Venton_(New_Earth)",
+    "https://dc.fandom.com/wiki/Bernard_Ferguson_(New_Earth)",
+    "https://dc.fandom.com/wiki/Bertram_Larvan_(New_Earth)"
 ]
 
 links.forEach(scrapeProduct);
