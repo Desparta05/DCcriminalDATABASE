@@ -9,23 +9,23 @@ import { Button } from './Button';
 
 export function NavBar() {
     const [sidebar, setSideBar] = useState(false);
-    const [button, setButton] = useState(true);
+    // const [button, setButton] = useState(true);
 
     const showSidebar = () => setSideBar(!sidebar)
 
-    const showButton = () => {
-        if (window.innerWidth <= 960 ) {
-            setButton(false);
-        } else {
-            setButton(true);
-        }
-    };
+    // const showButton = () => {
+    //     if (window.innerWidth <= 960 ) {
+    //         setButton(false);
+    //     } else {
+    //         setButton(true);
+    //     }
+    // };
 
-    useEffect(() => {
-        showButton()
-    }, []);
+    // useEffect(() => {
+    //     showButton()
+    // }, []);
 
-    window.addEventListener('resize', showButton)
+    // window.addEventListener('resize', showButton)
 
     return (
         <>

@@ -46,6 +46,10 @@ const villainSchema= new Schema({
         type: String,
         require: true,
     },
+    Weakness: {
+        type: String,
+        require: true,
+    },
 
 })
 

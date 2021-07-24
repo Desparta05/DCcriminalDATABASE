@@ -81,25 +81,21 @@ async function scrapeProduct(url) {
     // Scrape Description
     Description = await getVillainAttribute(url, 'description', page, '//*[@id="mw-content-text"]/div/p[3]', 'textContent');
 
-    console.log({ Image, Name, Alias, Gender, Height, Weight, EyeColor, HairColor, City, Powers, Description });
+    //Scrape Weakness
+    Weakness = await getVillainAttribute(url, 'weakness', page, '//*[@id="mw-content-text"]/div/ul[2]', 'textContent')
+
+    console.log({ Image, Name, Alias, Gender, Height, Weight, EyeColor, HairColor, City, Powers, Description, Weakness });
 
     browser.close();
-    db.Villains.create({ Image, Name, Alias, Gender, Height, Weight, EyeColor, HairColor, City, Powers, Description }).then(() => console.log("character created"))
+    db.Villains.create({ Image, Name, Alias, Gender, Height, Weight, EyeColor, HairColor, City, Powers, Description, Weakness }).then(() => console.log("character created"))
 }
 
 // scrapeProduct('https://dc.fandom.com/wiki/Catwoman_(Selina_Kyle)');
 
 var links = [
-    "https://dc.fandom.com/wiki/Benjamin_Gruener_(New_Earth)",
-    "https://dc.fandom.com/wiki/Benjamin_Love_(New_Earth)",
-    "https://dc.fandom.com/wiki/Benjamin_Raymond_(New_Earth)",
-    "https://dc.fandom.com/wiki/Benjamin_Stryker_(New_Earth)",
-    "https://dc.fandom.com/wiki/Berelda_(New_Earth)",
-    "https://dc.fandom.com/wiki/Bernadeth_(New_Earth)",
-    "https://dc.fandom.com/wiki/Bernard_Bonner_(New_Earth)",
-    "https://dc.fandom.com/wiki/Bernard_Venton_(New_Earth)",
-    "https://dc.fandom.com/wiki/Bernard_Ferguson_(New_Earth)",
-    "https://dc.fandom.com/wiki/Bertram_Larvan_(New_Earth)"
+    "https://dc.fandom.com/wiki/Lazlo_Valentin_(Prime_Earth)",
+    "https://dc.fandom.com/wiki/Joseph_Blackfire_(Prime_Earth)",
+    "https://dc.fandom.com/wiki/Kirk_Langstrom_(Prime_Earth)"
 ]
 
 links.forEach(scrapeProduct);

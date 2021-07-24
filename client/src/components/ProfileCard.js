@@ -25,10 +25,10 @@ function ProfileCard(props) {
                         <strong>Weight:</strong> {props.Weight}
                     </li>
                     <li>
-                        <strong>EyeColor:</strong> {props.EyeColor}
+                        <strong>Eye Color:</strong> {props.EyeColor}
                     </li>
                     <li>
-                        <strong>HairColor:</strong> {props.HairColor}
+                        <strong>Hair Color:</strong> {props.HairColor}
                     </li>
                     <li>
                         <strong>City:</strong> {props.City}

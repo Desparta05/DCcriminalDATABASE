@@ -15,6 +15,7 @@ const API = {
     },
 
     signUp: function (body) {
+        console.log("body showing")
         return axios.post("/api/users", { data: body });
     },
 

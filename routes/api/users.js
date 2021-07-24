@@ -2,6 +2,7 @@ const router = require("express").Router();
 const db = require("../../models");
 const bcrypt = require("bcrypt");
 
+// Signup
 router.post(`/`, async (req, res) => {
     try {
         req.body.data.password = await bcrypt.hash(req.body.data.password, 10);
@@ -15,6 +16,8 @@ router.post(`/`, async (req, res) => {
     }
 });
 
+
+// Login
 router.post('/login', async (req, res) => {
     try {
         const userData = await db.User.findOne({ username: req.body.data.username });

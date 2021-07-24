@@ -31,18 +31,7 @@ class Villains extends Component {
           <ProfileCard
           key={villain._id} 
           {...villain}
-          // id={villain.id}
-          //   alias={villain.Alias} 
-          //   name={villain.Name} 
-          //   imageSrc={villain.Image}
-          //   city={villain.City}
-          //   gender={villain.Gender}
-          //   height={villain.Height}
-          //   weight={villain.Weight}
-          //   eyeColor={villain.EyeColor}
-          //   hairColor={villain.HairColor}
-          //   powers={villain.Powers}
-          //   description={villain.Description}
+
           />
         ))}
       </Wrapper>

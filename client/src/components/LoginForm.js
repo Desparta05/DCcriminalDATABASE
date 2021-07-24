@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-const API = require("../utils/API");
+import API from "../utils/API"
 
 function LoginForm() {
     let [body, setBody] = useState({});
@@ -12,9 +12,7 @@ function LoginForm() {
             document.getElementById("floatingInputLogin").value = "";
             document.getElementById("floatingPasswordLogin").value = "";
             await API.login(body);
-            window.location.pathname = "/home";
         } catch (err) {
-            document.getElementById("errorLogin").classList.remove("d-none")
             console.log(err);
         }
     }
@@ -45,9 +43,9 @@ function LoginForm() {
                         type="text"
                         className="form-control"
                         id="floatingInputLogin"
-                        placeholder="user123"
+                        placeholder="..."
                     />
-                    <label htmlFor="floatingInputLogin">Username</label>
+                    <label htmlFor="floatingInputLogin">Codename</label>
                 </div>
                 <div className="form-floating">
                     <input
@@ -55,7 +53,7 @@ function LoginForm() {
                         type="password"
                         className="form-control"
                         id="floatingPasswordLogin"
-                        placeholder="Password"
+                        placeholder="..."
                     />
                     <label htmlFor="floatingPasswordLogin">Password</label>
                 </div>

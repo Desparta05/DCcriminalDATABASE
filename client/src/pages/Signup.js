@@ -2,8 +2,16 @@
 import React from 'react'
 import LoginForm from '../components/LoginForm';
 import SignUpForm from '../components/SignUpForm';
+import API from "../utils/API"
+
 
 function Signup() {
+
+    const handleLogout = async() => {
+        await API.logout()
+        console.log("logout successful")
+}
+
     return (
         <>
             <header className="row text-center">
@@ -24,6 +32,11 @@ function Signup() {
                 <div className="col-4 my-5 mx-5" id="signUpContainer">
                     <SignUpForm />
                 </div>
+            </div>
+            <div>
+                <a className='btn btn-danger' onClick={handleLogout}>
+                    Logout
+                </a>
             </div>
         </>
     )

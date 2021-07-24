@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-const API = require("../utils/API");
+import API from "../utils/API";
 
 function SignUpForm() {
     let [body, setBody] = useState({});
@@ -9,12 +9,12 @@ function SignUpForm() {
     async function handleSubmit(e) {
         e.preventDefault();
         try {
+            console.log("Start");
             document.getElementById("floatingInputSignUp").value = "";
             document.getElementById("floatingPasswordSignUp").value = "";
             await API.signUp(body);
-            window.location.pathname = "/home";
+            console.log("complete");
         } catch (err) {
-            document.getElementById("errorSignUp").classList.remove("d-none")
             console.log(err);
         }
     }
@@ -45,9 +45,9 @@ function SignUpForm() {
                         type="text"
                         className="form-control"
                         id="floatingInputSignUp"
-                        placeholder="user123"
+                        placeholder="..."
                     />
-                    <label htmlFor="floatingInputSignUp">Username</label>
+                    <label htmlFor="floatingInputSignUp">Codename</label>
                 </div>
                 <div className="form-floating">
                     <input
@@ -55,7 +55,7 @@ function SignUpForm() {
                         type="password"
                         className="form-control"
                         id="floatingPasswordSignUp"
-                        placeholder="Password"
+                        placeholder="..."
                     />
                     <label htmlFor="floatingPasswordSignUp">Password</label>
                 </div>
@@ -65,7 +65,7 @@ function SignUpForm() {
                     onClick={handleSubmit}
                 >
                     Submit
-        </button>
+                </button>
             </form>
         </>
     );

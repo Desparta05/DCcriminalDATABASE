@@ -13,6 +13,11 @@ const UserSchema = new Schema({
         required: [true, `Please enter a valid password`],
         trim: true,
     },
+    codename: {
+        type: String,
+        trim: true,
+    },
+    
 
 });
 
