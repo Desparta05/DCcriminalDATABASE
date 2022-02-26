@@ -10,19 +10,19 @@ import Header from "../components/Header";
 import villains from "../villains.json"
 
 class Villains extends Component {
-  // Setting this.state.friends to the friends json array
+  // Setting this.state.villains to the villains json array
   state = {
     villains
   };
 
   removeFriend = id => {
-    // Filter this.state.friends for friends with an id not equal to the id being removed
+    // Filter this.state.villains for villains with an id not equal to the id being removed
     const villains = this.state.villains.filter(villain => villain._id !== id);
-    // Set this.state.friends equal to the new friends array
+    // Set this.state.villains equal to the new villains array
     this.setState({ villains });
   };
 
-  // Map over this.state.friends and render a FriendCard component for each friend object
+  // Map over this.state.villains and render a FriendCard component for each friend object
   render() {
     return (
       <Wrapper>

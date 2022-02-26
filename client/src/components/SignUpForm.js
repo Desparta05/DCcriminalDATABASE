@@ -45,9 +45,9 @@ function SignUpForm() {
                         type="text"
                         className="form-control"
                         id="floatingInputSignUp"
-                        placeholder="..."
+                        placeholder="Codename"
                     />
-                    <label htmlFor="floatingInputSignUp">Codename</label>
+                    {/* <label htmlFor="floatingInputSignUp">Codename</label> */}
                 </div>
                 <div className="form-floating">
                     <input
@@ -55,9 +55,9 @@ function SignUpForm() {
                         type="password"
                         className="form-control"
                         id="floatingPasswordSignUp"
-                        placeholder="..."
+                        placeholder="Password"
                     />
-                    <label htmlFor="floatingPasswordSignUp">Password</label>
+                    {/* <label htmlFor="floatingPasswordSignUp">Password</label> */}
                 </div>
                 <button
                     className="btn d-block m-auto mt-3"

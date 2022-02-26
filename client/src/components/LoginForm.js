@@ -43,9 +43,9 @@ function LoginForm() {
                         type="text"
                         className="form-control"
                         id="floatingInputLogin"
-                        placeholder="..."
+                        placeholder="Codename"
                     />
-                    <label htmlFor="floatingInputLogin">Codename</label>
+                    {/* <label htmlFor="floatingInputLogin">Codename</label> */}
                 </div>
                 <div className="form-floating">
                     <input
@@ -53,9 +53,9 @@ function LoginForm() {
                         type="password"
                         className="form-control"
                         id="floatingPasswordLogin"
-                        placeholder="..."
+                        placeholder="Password"
                     />
-                    <label htmlFor="floatingPasswordLogin">Password</label>
+                    {/* <label htmlFor="floatingPasswordLogin">Password</label> */}
                 </div>
                 <button
                     className="btn d-block m-auto mt-3"
